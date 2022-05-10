@@ -1,0 +1,40 @@
+body {
+	background-color: #212E38;
+	color: #A5DBDD;
+}
+#logo {
+	background-image: url('../theme/logo_aqua.png');
+}
+#content table th, #content table td, #content .forum_post_meta, #content .forum_post, #tms .border, h1 span,h2 span,h3 span, #content h1, #content, #side .widge, #side .widge h2, #side .widge h2.sect, #user_panel, #user_panel #ave, #user_greeting, #layout_collapse, #tms fieldset, #tms fieldset legend  {
+	border-color: #255175;
+	background-color: #1D3345;
+	color: #A5DBDD;
+}
+#content tr.alt td, #content table th, #tms .alt, #content .alt, #side .alt, #side .widge .alt, #tms .alt a  {
+	background-color: #1B2A41;
+}
+#tms h1 span, #tms h2 span, #tms h3 span {
+	text-shadow: #000 1px 1px 1px;
+}
+a, .fake_link {
+	color: #A5DBDD;
+}
+a:hover, .fake_link:hover {
+	color: #E7F7F8;
+}
+
+input:focus, textarea:focus, select:focus {
+	color: #A5DBDD;
+	background-color: #1D3345;
+	border-color: #28689D;
+}
+
+input, textarea, select {
+	color: #A5DBDD;
+	background-color: #1D3345;
+	border-color: #255175;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+	color: white;
+}

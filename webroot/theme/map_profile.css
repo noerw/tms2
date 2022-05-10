@@ -1,0 +1,137 @@
+.map_author {
+	clear: both;
+	float: none;
+	border: 1px solid;
+	margin-bottom: 20px;
+	position: relative;
+	margin-top: 28px;
+	margin-left: 10px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+.map_author_name {
+	border-top: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	font-size: 10px;
+	height: 14px;
+	line-height: 14px;
+	top: -16px;
+	left: 10px;
+	position: absolute;
+	padding-left: 5px;
+	padding-right: 5px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	display: inline;
+}
+
+.map_author_avatar {
+	float: left;
+	margin-right: 4px;
+	border-right: 1px solid;
+	vertical-align: middle;
+	overflow: hidden;
+	min-width: 60px;
+	text-align: center;
+	min-height: 65px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.map_author_avatar img {
+	margin-top: 2px;
+}
+.map_author_actions {
+	float: right;
+	border-left: 1px solid;
+	min-height: 65px;
+}
+#content .map_author_actions ul {
+	padding: 0;
+	margin: 0;
+}
+#content .map_author_actions ul li {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 0;
+	list-style-type: none;
+}
+#content .map_author_actions ul li a {
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.map_author_more_txt {
+	position: absolute;
+	left: 70px;
+	top: 0;
+	font-size: 10px;
+}
+
+.map_author_more {
+	float: left;
+	margin-top: 13px;
+}
+
+.map_author_more a {
+	float: left;
+	margin-right: 10px;
+	width: 47px;
+	height: 47px;
+	overflow: hidden;
+}
+.map_author_more a img {
+	margin: 0;
+	padding: 0;
+	border: 1px solid;
+}
+
+.overview.gen_box_rh_content, .screenshots.gen_box_rh_content {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.screenshots.gen_box_rh_content a {
+	margin-right: 15px;
+}
+
+.gen_box_rh_content.download a {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 70%;
+	line-height: 30px;
+	font-weight: bold;
+	font-size: 15px;
+	display: block;
+	text-decoration: none;
+	border: 1px solid;
+}
+
+.sub {
+	text-align: center;
+	margin: 5px;
+}
+
+#map_rate_form {
+	margin: 10px;
+}
+
+#map_rate_form  select {
+	margin-bottom: 15px;
+}
+
+#map_rate_comment {
+	width: 90%;
+	height: 100px;
+	margin: 10px;
+}

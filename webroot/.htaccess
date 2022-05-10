@@ -1,0 +1,13 @@
+RewriteEngine on
+RewriteRule ^m/([^/\.]+)/?$ index.php?action=map_rate&map=$1 [L]
+RewriteRule ^d/([^/\.]+)/?$ index.php?action=download&sa=file&map=$1 [L]
+RewriteRule ^p/([^/\.]+)/?$ index.php?action=download&sa=pic&map=$1 [L]
+RewriteRule ^u/([^/\.]+)/?$ index.php?action=user_maps&id=$1 [L]
+RewriteRule ^list/?$  index.php?action=mapsb&$1 [L]
+
+RewriteRule ^t/(\d+)$ index.php?action=map_thumbnail;id=$1 [L]
+RewriteRule ^t/(\d+):(\d+)x(\d+)$ index.php?action=map_thumbnail;id=$1;sw=$2;sh=$3 [L]
+
+RewriteRule ^t/(\d+):sc([1-3])$ index.php?action=screenshot_thumbnail;id=$1;scn=$2 [L]
+RewriteRule ^t/(\d+):sc([1-3]):(\d+)x(\d+)$ index.php?action=screenshot_thumbnail;id=$1;scn=$2;sw=$3;sh=$4 [L]
+RewriteRule ^a/(\d+)$ index.php?action=view_avatar&u=$1 [L]

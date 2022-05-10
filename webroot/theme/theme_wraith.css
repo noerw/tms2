@@ -1,0 +1,36 @@
+body {
+	background-color: rgb(84, 115, 186);
+	color: rgb(48, 69, 120);
+}
+#logo {
+	background-image: url('../theme/logo_black.png');
+}
+#content table th, #content table td, #content .forum_post_meta, #content .forum_post, #tms .border, h1 span,h2 span,h3 span, #content h1, #content, #side .widge, #side .widge h2, #side .widge h2.sect, #user_panel, #user_panel #ave, #user_greeting, #layout_collapse, #tms fieldset, #tms fieldset legend  {
+	border-color: rgb(242, 164, 111);
+	background-color: rgb(170, 185, 221);
+	/*color: #A5DBDD;*/
+}
+#content tr.alt td, #content table th, #tms .alt, #content .alt, #side .alt, #side .widge .alt, #tms .alt a  {
+	background-color: rgb(198, 207, 232);
+}
+#tms h1 span, #tms h2 span, #tms h3 span {
+	/*text-shadow: #000 1px 1px 1px;*/
+}
+a, .fake_link {
+	color: rgb(194, 87, 16);
+}
+/*a:hover, .fake_link:hover {
+	color: rgb(48, 69, 120);
+}*/
+
+/*input:focus, textarea:focus, select:focus {
+	color: #A5DBDD;
+	background-color: #1D3345;
+	border-color: #28689D;
+}
+
+input, textarea, select {
+	color: #A5DBDD;
+	background-color: #1D3345;
+	border-color: #255175;
+}*/

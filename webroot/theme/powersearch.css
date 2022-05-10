@@ -1,0 +1,40 @@
+#powersearch_form {
+	overflow: hidden;
+	padding-bottom: 0;
+}
+#powersearch_form_keywords input.txt {
+	width: 60%;
+}
+#powersearch_form .sect {
+	overflow: hidden;
+	padding: 5px;
+}
+#powersearch_form .sect .txt {
+	width: 70%;
+}
+#powersearch_form .sect select {
+	width: 70%;
+}
+#powersearch_form .sect > label {
+	float: left;
+	width: 30%;
+	text-align: right;
+	position: relative;
+	top: 10px;
+}
+#powersearch_form .sect > div {
+	float: left;
+	width: 70%;
+	left: 40px;
+	position: relative;
+}
+#powersearch_form .sect .sub {
+	padding-left: 10px;
+}
+#powersearch_form_search {
+	text-align: center;
+}
+#powersearch_form_search input {
+	font-size: 14px;
+	margin: 10px;
+}

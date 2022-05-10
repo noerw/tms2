@@ -1,0 +1,28 @@
+body {
+	background-color: #66738c;
+	color: #082938;
+	font-family: Arial;
+}
+body a {
+	color: #000;
+}
+#logo {
+	background-image: url('../theme/logo_black.png');
+}
+#content table th, #content table td, #content .forum_post_meta, #content .forum_post, #tms .border, h1 span,h2 span,h3 span, #content h1, #content, #side .widge, #side .widge h2, #side .widge h2.sect, #user_panel, #user_panel #ave, #user_greeting, #layout_collapse, #tms fieldset, #tms fieldset legend  {
+	border-color: #e6e9f0;
+	background-color: #b4bed4;
+	color: #000;
+}
+#content tr.alt td, #content table th, #tms .alt, #content .alt, #side .alt, #side .widge .alt, #tms .alt a  {
+	background-color: #9aa8c5;
+}
+h1 span,h2 span,h3 span {
+	text-shadow: #cdd4e3 1px 1px 1px;
+}
+a, .fake_link {
+	color: #000;
+}
+a:hover, .fake_link:hover {
+	color: #000;
+}

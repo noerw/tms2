@@ -1,0 +1,30 @@
+body {
+	background-color: #c4ccc4;
+	color: #082938;
+}
+body a {
+	color: #000000;
+}
+body a:hover {
+	color: #0f5069;
+}
+#logo {
+	background-image: url('../theme/logo_black.png');
+}
+#content table th, #content table td, #content .forum_post_meta, #content .forum_post, #tms .border, h1 span,h2 span,h3 span, #content h1, #content, #side .widge, #side .widge h2, #side .widge h2.sect, #user_panel, #user_panel #ave, #user_greeting, #layout_collapse, #tms fieldset, #tms fieldset legend  {
+	border-color: #000;
+	background-color: #ebebeb;
+	color: #000;
+}
+#content tr.alt td, #content table th, #tms .alt, #content .alt, #side .alt, #side .widge .alt, #tms .alt a  {
+	background-color: #ffffff;
+}
+#tms h1 span, #tms h2 span, #tms h3 span {
+	text-shadow: #082938 0px 0px 5px;
+}
+a, .fake_link {
+	color: #0f5069;
+}
+a:hover, .fake_link:hover {
+	color: #000000;
+}
