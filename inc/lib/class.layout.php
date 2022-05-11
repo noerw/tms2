@@ -171,7 +171,7 @@ class Layout  {
 			if ($ui->loggedIn()) {
 			echo '
 			<div style="overflow: hidden;">
-				<div id="ave"><img src="/a/'.$ui->userID().'" alt="'.stringprep($ui->userName()).'" /></div>
+				<div id="ave"><img style="width: 60px; height: 60px;" src="/a/'.$ui->userID().'" alt="'.stringprep($ui->userName()).'" /></div>
 				<ul id="user_actions">
 					<li><a href="'.$entry_point.'?action=map_upload">Map Upload</a> | <a href="'.$entry_point.'?action=my_maps">My Maps</a></li>
 					<li><a href="'.$entry_point.'?action=pm">PM</a></li>

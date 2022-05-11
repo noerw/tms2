@@ -18,11 +18,8 @@ select
 	m.username,
 	m.regdate,
 	m.pending,
-	m.email,
 	m.lastaction,
 	m.lastip,
-	m.hide_email,
-	m.msn,
 	m.banned,
 	m.nummaps,
 	(select count(*) as num from shoutbox where user = m.id) as num_shouts,
@@ -64,22 +61,6 @@ foreach ($user_info as $k => $v)
 $layout->add_dep('css', 'user_profile.css');
 $layout->head($user_info['username']);
 ?>
-
-
-
-<div class="gen_box_rh border">
-	<div class="gen_box_rh_head border">
-		<h4>Contact</h4>
-	</div>
-	<div class="gen_box_rh_content">
-		<ul>
-			<li>MSN: <?=$user_info['msn']?></li>
-			<li>Email: <?=((int)$user_info['hide_email'] == 1 ? '<em>hidden</em>' : $user_info['email'])?></li>
-		</ul>
-	</div>
-</div>
-
-
 
 <div class="gen_box_rh border">
 	<div class="gen_box_rh_head border">
