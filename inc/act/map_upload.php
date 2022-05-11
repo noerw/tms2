@@ -76,21 +76,13 @@ if (!isset($_POST['do_upload' ]) || $_POST['do_upload' ] != 'yes' || !$ui->isVer
 					</div>
 				</div>
 				<div class="small_form_row alt">
-					<label for="waypoints">Has Waypoints?</label>
-					<select id="waypoints" name="waypoints">
-						<option value="">Don't Specify</option>
-						<option value="yes">Yes</option>
-						<option value="no">No</option>
-					</select>
-				</div>
-				<div class="small_form_row">
 					<label for="comments">Comments / Ratings:</label>
 					<select id="comments" name="comments">
 						<option value="yes">Allow Them</option>
 						<option value="no">Disable Them</option>
 					</select>
 				</div>
-				<div class="small_form_row alt" style="margin-bottom: 0;">
+				<div class="small_form_row" style="margin-bottom: 0;">
 					<label for="description">Description:</label>
 					<div class="small_form_vals">
 						<textarea class="still" cols="20" rows="5" id="description" name="description"></textarea>

@@ -12,7 +12,7 @@ $ui->loggedIn() or
 	$layout->errorMsg('Must be logged in');
 
 // Must be activated
-$ui->userActivated() or 
+$ui->userActivated() or
 	$layout->errorMsg('Account must be activated');
 
 // Decide what to do
@@ -78,12 +78,12 @@ function show_my_maps() {
 			m.`date`,
 			m.`lastedit`,
 			g.`name` as gametype_name,
-			d.`file` as downs_map, 
+			d.`file` as downs_map,
 			d.`pic` as downs_ov
 		from
 			`maps` as m
 			join `gametypes` as g on g.`id` = m.`gametype`
-			left join `map_downloads` as d on d.`mapid` = m.`id` 
+			left join `map_downloads` as d on d.`mapid` = m.`id`
 		where
 			m.`user` = '".$ui->userID()."' and
 			m.`missing` = '0'
@@ -94,7 +94,7 @@ function show_my_maps() {
 
 	// Show them
 	for ($alt = false; $map = $sql->fetch_assoc($get_maps); $alt = !$alt) {
-		
+
 		// Send out row
 		echo '
 		<tr',$alt ? ' class="alt"' : '','>
@@ -105,7 +105,7 @@ function show_my_maps() {
 			<td><a href="'.$entry_point_sm.'?overview='.$map['id'].'">Go</a> ['.$map['downs_ov'].']</td>
 			<td><a href="'.$entry_point_sm.'?map='.$map['id'].'">Go</a> ['.$map['downs_map'].']</td>
 			<td>';
-		
+
 			// Mention screenshots if they exist
 			if ($map['sc1'] == '' && $map['sc2'] == '' && $map['sc3'] == '') {
 				// They don't
@@ -115,7 +115,7 @@ function show_my_maps() {
 				// At least one does
 				foreach (range(1, 3) as $scn)
 					if ($map['sc'.$scn] != '')
-						echo '<a href="'.$entry_point.'?action=download&amp;map='.$map['id'].'&amp;sa=scr&amp;scn='.$scn.'">'.$scn.'</a>'; 
+						echo '<a href="'.$entry_point.'?action=download&amp;map='.$map['id'].'&amp;sa=scr&amp;scn='.$scn.'">'.$scn.'</a>';
 			}
 
 			echo '</td>
@@ -145,7 +145,6 @@ function map_edit() {
 	$get_info = $sql->query("
 		select
 			m.`no_comments`,
-			m.`waypoints`,
 			m.`rec_players_start`,
 			m.`rec_players_end`,
 			m.`user`,
@@ -160,11 +159,11 @@ function map_edit() {
 			m.`sc3`,
 			m.`date`,
 			m.`lastedit`,
-			d.`file` as downs_map, 
+			d.`file` as downs_map,
 			d.`pic` as downs_ov
 		from
 			`maps` as m
-			left join `map_downloads` as d on d.`mapid` = m.`id` 
+			left join `map_downloads` as d on d.`mapid` = m.`id`
 		where
 			m.`id` = '$mid'
 		limit 1
@@ -173,11 +172,11 @@ function map_edit() {
 	// Not a map?
 	if ($sql->num($get_info) == 0)
 		$layout->errorMsg('Invalid map id');
-	
+
 	// Get info
 	$map_info = $sql->fetch_assoc($get_info);
 	$sql->free($get_info);
-	foreach(array('title', 'info', 'gametype_name') as $k) 
+	foreach(array('title', 'info', 'gametype_name') as $k)
 		$map_info[$k] = stringprep($map_info[$k]);
 
 	// Not my map?
@@ -197,8 +196,8 @@ function map_edit() {
 
 		?>
 
-	<p>	
-		<a href="<?=$entry_point?>?action=my_maps">&laquo; My Maps</a> | 
+	<p>
+		<a href="<?=$entry_point?>?action=my_maps">&laquo; My Maps</a> |
 		<a href="<?=$entry_point_sm?>?map=<?=$mid?>">Map Profile</a> |
 		<a href="<?=$entry_point?>?action=auto_bbc;map=<?=$mid?>">Generate BB Code</a> |
 		<a href="<?=$entry_point?>?action=clear_thumbnail_cache;map=<?=$mid?>">Clear thumbnail cache</a>
@@ -218,11 +217,11 @@ function map_edit() {
 					<?php
 						// Get gametypes
 						$get_gt = $sql->query("select `id`, `name` from `gametypes` order by `name` asc");
-						
+
 						// Show them
 						while (list($gt_id, $gt_name) = $sql->fetch_row($get_gt))
 							echo '<option',$map_info['gametype'] == $gt_id ? ' selected="selected"' : '',' value="'.$gt_id.'">'.$gt_name.'</option>';
-							
+
 						// Free that
 						$sql->free($get_gt);
 					?>
@@ -231,26 +230,18 @@ function map_edit() {
 				<div class="small_form_row">
 					<label for="rc_f1">Best Number of Players:</label>
 					<div class="small_form_vals">
-						<input value="<?=($map_info['rec_players_start'] == 0 ? '' : $map_info['rec_players_start'])?>" size="2" maxlength="2" type="text" id="rc_f1" name="rc_f1" /> to 
+						<input value="<?=($map_info['rec_players_start'] == 0 ? '' : $map_info['rec_players_start'])?>" size="2" maxlength="2" type="text" id="rc_f1" name="rc_f1" /> to
 						<input value="<?=($map_info['rec_players_end'] == 0 ? '' :  $map_info['rec_players_end'])?>"  size="2" maxlength="2" type="text" id="rc_f2" name="rc_f2" />
 					</div>
 				</div>
 				<div class="small_form_row alt">
-					<label for="waypoints">Has Waypoints?</label>
-					<select id="waypoints" name="waypoints">
-						<option<?=($map_info['waypoints'] == '' ? ' selected="selected"' : '')?> value="">Don't Specify</option>
-						<option<?=($map_info['waypoints'] == 1 ? ' selected="selected"' : '')?> value="yes">Yes</option>
-						<option<?=($map_info['waypoints'] == 0 ? ' selected="selected"' : '')?> value="no">No</option>
-					</select>	
-				</div>
-				<div class="small_form_row">
 					<label for="comments">Comments / Ratings:</label>
 					<select id="comments" name="comments">
 						<option<?=($map_info['no_comments'] == 0 ? ' selected="selected"' : '')?> value="yes">Allow Them</option>
 						<option<?=($map_info['no_comments'] == 1 ? ' selected="selected"' : '')?> value="no">Disable Them</option>
-					</select>	
+					</select>
 				</div>
-				<div class="small_form_row alt">
+				<div class="small_form_row">
 					<label for="description">Description:</label>
 					<div class="small_form_vals">
 						<textarea class="still" cols="20" rows="5" id="description" name="description"><?=$map_info['info']?></textarea>
@@ -307,7 +298,7 @@ function map_edit() {
 
 		// End layout
 		$layout->foot();
-		
+
 		// Stop after form
 		exit;
 
@@ -327,7 +318,7 @@ function map_edit() {
 			$new_waypoints = $_POST['waypoints'] == 'yes' ? 1 : 0;
 			$new_dis_comments = $_POST['comments'] == 'no' ? 1 : 0;
 			$new_description = $sql->prot(trim(strip_tags($_POST['description'])));
-			
+
 			if (!preg_match('/^[a-z0-9\-\_\ ]+$/i', $new_title) || $new_title == '')
 				$layout->errorMsg('Map title must exist, and exist of only letters, numbers, underscores, and possibly dashes and spaces.');
 
@@ -337,7 +328,7 @@ function map_edit() {
 				// Make sure this gametype exists
 				if (!gametype_exists($new_gametype))
 					$layout->errorMsg('Your new chosen gametype does not exist.');
-				
+
 				// Increment number of maps for the new gamemode
 				$sql->query("update `gametypes` set `nummaps` = `nummaps` + 1 where `id` = '$new_gametype' limit 1");
 
@@ -359,7 +350,7 @@ function map_edit() {
 			where
 				`id` = '$mid'
 			limit 1");
-			
+
 			// Go back
 			redirect($entry_point.'?action=my_maps;sa=edit;mid='.$mid.';updated=1');
 
@@ -386,15 +377,15 @@ function map_edit() {
 			$handles['sc1'] = array_key_exists('scrot_1', $_FILES) ? $_FILES['scrot_1'] : false;
 			$handles['sc2'] = array_key_exists('scrot_2', $_FILES) ? $_FILES['scrot_2'] : false;
 			$handles['sc3'] = array_key_exists('scrot_3', $_FILES) ? $_FILES['scrot_3'] : false;
-			
+
 			// Localize upsizes
 			$upsize['archive'] = $max_up_size['map_file'];
 			$upsize['overview'] = $upsize['sc1'] = $upsize['sc2'] = $upsize['sc3'] = $max_up_size['map_pic'];
-			
+
 			// And extensions
-			$al_ext['archive'] = $allowed_map_exts; 
+			$al_ext['archive'] = $allowed_map_exts;
 			$al_ext['overview'] = $al_ext['sc1'] = $al_ext['sc2'] = $al_ext['sc3'] = $allowed_picture_exts;
-			
+
 			// So far we don't want to save revision date
 			$save_revision_date = false;
 
@@ -416,13 +407,13 @@ function map_edit() {
 				// Deal with ext
 				if (!in_array(get_file_extension($info['name']), (array)$al_ext[$type]))
 					continue;
-				
+
 				// Seems okay, find how to deal with it:
 				switch($type) {
-					
+
 					// Archive
 					case 'archive':
-						
+
 						// kill current
 						$current = $local_path.basename($map_info['url']);
 						#exit($current);
@@ -440,15 +431,15 @@ function map_edit() {
 
 						// Success!
 						$updated_files[] = 'Map Archive';
-						
+
 						// Don't forget to update path..
 						$update_paths[] = "`url`='".$sql->prot($db_path.$fn)."'";
-						
+
 						// And we do want to update the revision date
 						$save_revision_date = true;
 
 					break;
-					
+
 					// Overview
 					case 'overview':
 
@@ -465,10 +456,10 @@ function map_edit() {
 
 						// Success!
 						$updated_files[] = 'Overview';
-						
+
 						// Don't forget to update path..
 						$update_paths[] = "`img`='".$sql->prot($db_path.$fn)."'";
-						
+
 						// Clear thumbs
 						try {
 							$cache = new OV_Thumbs($mid);
@@ -477,13 +468,13 @@ function map_edit() {
 						catch (cacheException $e) {}
 
 					break;
-					
+
 					// Screenshots
 					case 'sc1':
 					case 'sc2':
 					case 'sc3':
-						
-						// Define screenshot number 
+
+						// Define screenshot number
 						$scn = substr($type, -1);
 
 						// kill current
@@ -502,7 +493,7 @@ function map_edit() {
 
 						// Success!
 						$updated_files[] = 'Screenshot #'.$scn;
-						
+
 						// Don't forget to update path..
 						$update_paths[] = "`sc$scn`='".$sql->prot($db_path.$fn)."'";
 
@@ -515,18 +506,18 @@ function map_edit() {
 							#echo $e->getMessage();
 						}
 					break;
-					
+
 					// This should never happen
 					default:
 						continue;
 					break;
 				}
 			}
-			
+
 			// Deal with it
 			if (count($updated_files) == 0 || !is_array($update_paths))
 				$layout->errorMsg('No files updated.');
-			
+
 			// Save revision date?
 			if ($save_revision_date)
 				$update_paths[] = '`lastedit` = UNIX_TIMESTAMP()';

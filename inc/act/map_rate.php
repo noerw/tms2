@@ -210,7 +210,6 @@ echo '
 			<li>Date uploaded: '.$ui->myDate('m/d/y @ h:i A', $map_info->UPLOAD_DATE).'</li>
 			<li>Date revised: ',empty($map_info->EDIT_DATE) ? '<em>never</em>' : $ui->myDate('m/d/y @ h:i A', $map_info->EDIT_DATE),'</li>
 			<li>Gametype: <a href="'.$entry_point.'?action=map_gt&amp;gametype='.$map_info->GAMETYPE_ID.'">'.$map_info->GAMETYPE_NAME.'</a></li>
-			<li>Waypoints: ', $map_info->WAYPOINTS ? 'Yes' : 'No','</li>
 			<li>Average Rating: ', $map_info->RATING ? ceil($map_info->RATING) . '/5 Stars' : '<em>not yet rated</em>','</li>
 			<li>Overview Link: <a href="'.$entry_point_sm.'?overview='.$mid.'">'.$entry_point_sm.'?overview='.$mid.'</a></li>
 			<li>Download Link: <a href="'.$entry_point_sm.'?download='.$mid.'">'.$entry_point_sm.'?download='.$mid.'</a></li>
@@ -237,7 +236,7 @@ echo '
 // Ratings
 
 // Not disabled?
-if ($map_info->NO_COMMENTS != '1') { 
+if ($map_info->NO_COMMENTS != '1') {
 
 	echo '
 	<h2 id="comments"><span>Ratings / Comments ('.$map_info->NUMRATINGS.')</span></h2>

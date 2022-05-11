@@ -205,7 +205,6 @@ CREATE TABLE `maps` (
   `date` int(11) unsigned DEFAULT NULL,
   `lastedit` int(11) unsigned NOT NULL DEFAULT 0,
   `beta` enum('0','1') NOT NULL DEFAULT '0',
-  `waypoints` enum('0','1') NOT NULL DEFAULT '0',
   `missing` enum('0','1') NOT NULL DEFAULT '0',
   `no_comments` enum('0','1') NOT NULL DEFAULT '0',
   `rec_players_start` tinyint(2) unsigned NOT NULL DEFAULT 0,

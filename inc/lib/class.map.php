@@ -17,26 +17,26 @@ class ScrnInfoException extends Exception {}
  * Map info class
  */
 class MapInfo {
-	
+
 	protected $mid, $uid, $uName, $info, $img_path, $arch_path, $a_info, $_sql;
-	
+
 	/*
 	 * Start us off by localizing stuff
 	 */
 	function __construct($mid) {
-		
-		// Localize SQL 
+
+		// Localize SQL
 		$this->_sql = SQL::Fledging();
-		
+
 		// Validate map id
 		if (!ctype_digit($mid) || $mid == 0)
 			throw new MapException('Invalid map ID - '.$mid);
 
 		// Localize map id
 		$this->mid = $this->_sql->prot($mid);
-		
+
 	}
-	
+
 	/*
 	 * Does it exist and isn't missing?
 	 */
@@ -50,7 +50,7 @@ class MapInfo {
 		$this->_sql->free($check);
 		return $missing == 0;
 	}
-	
+
 	/*
 	 * Convert object of info $info to array of info $a_info
 	 */
@@ -58,7 +58,7 @@ class MapInfo {
 		foreach ($this->info as $k => $v)
 			$this->a_info[$k] = $v;
 	}
-	
+
 	/*
 	 * Get a little bit of info
 	 */
@@ -82,26 +82,26 @@ class MapInfo {
 			join members as a on a.id = m.user
 		where
 			m.id = '{$this->mid}'
-		limit 1		
+		limit 1
 		");
 
 		if ($this->_sql->num($get) == 0)
 			throw new MapException('No map with this ID');
-		
+
 		$this->info = $this->_sql->fetch_object($get);
-		
+
 		if ($this->info->missing == '1')
 			throw new MapException('Map files are missing');
-		
+
 		$this->uid = $this->info->AUTHOR_ID;
-		
+
 		$this->uName = stringprep($this->info->AUTHOR_USERNAME);
 
 		array_walk($this->info, create_function('&$v, $k', '$v = stringprep($v);'));
-		
+
 		return $this->info;
 	}
-	
+
 	/*
 	 * Get stats
 	 * Simple. So omit some checks and additional useless info
@@ -124,12 +124,12 @@ class MapInfo {
 
 		if ($this->_sql->num($get) == 0)
 			throw new MapException('No map with this ID');
-		
+
 		$this->info = $this->_sql->fetch_object($get);
-		
+
 		return $this->info;
 	}
-	
+
 	/*
 	 * Get a little more info
 	 */
@@ -150,29 +150,29 @@ class MapInfo {
 			join members as a on a.id = m.user
 		where
 			m.id = '{$this->mid}'
-		limit 1		
+		limit 1
 		");
 
 		if ($this->_sql->num($get) == 0)
 			throw new MapException('No map with this ID');
-		
+
 		$this->info = $this->_sql->fetch_object($get);
-		
+
 		$this->uid = $this->info->AUTHOR_ID;
-		
+
 		$this->uName = stringprep($this->info->AUTHOR_USERNAME);
 
 		array_walk($this->info, create_function('&$v, $k', '$v = stringprep($v);'));
-		
+
 		return $this->info;
 
 	}
-	
+
 	/*
 	 * Get a full dossier on this map
 	 */
 	function getAllInfo() {
-		
+
 		$get = $this->_sql->query("
 		select
 			m.user as AUTHOR_ID,
@@ -190,7 +190,6 @@ class MapInfo {
 			m.gametype as GAMETYPE_ID,
 			g.name as GAMETYPE_NAME,
 			m.info as INFO,
-			m.waypoints as WAYPOINTS,
 			m.sc1 as SC1_PATH,
 			m.sc2 as SC2_PATH,
 			m.sc3 as SC3_PATH,
@@ -214,21 +213,21 @@ class MapInfo {
 			m.id = '{$this->mid}'
 		limit 1
 		");
-		
+
 		if ($this->_sql->num($get) == 0)
 			throw new MapException('No map with this ID');
-		
+
 		$this->info = $this->_sql->fetch_object($get);
-		
+
 		$this->uid = $this->info->AUTHOR_ID;
-		
+
 		$this->uName = stringprep($this->info->AUTHOR_USERNAME);
-	
+
 		array_walk($this->info, create_function('&$v, $k', '$v = stringprep($v);'));
-		
+
 		return $this->info;
 	}
-	
+
 	/*
 	 * Make sure map name has appropriate prefixes for gamemode
 	 */
@@ -248,28 +247,28 @@ class MapInfo {
 			break;
 		}
 	}
-	
+
 	/*
 	 * Following are related to file downloading
 	 */
-	
+
 	// Get stats on overview
 	function overviewInfo() {
 		global $sp;
-		
+
 		if (!isset($this->info->PICTURE_PATH))
 			throw new MapOvInfoException('Do not know ov path');
-		
+
 		$this->img_path = $sp['maps'] . str_replace(array('/home/jrgporg/public_html/tms/','maps/'), '', $this->info->PICTURE_PATH);
-		
+
 		// Doesn't exist?
 		if (!is_file($this->img_path))
 			throw new MapOvInfoException('Cannot find overview file');
-			
+
 		// Get info
 		if (!($img_info = @getimagesize($this->img_path)))
 			throw new MapOvInfoException('Cannot get info on overview file');
-			
+
 		// Give it
 		return array(
 			'width' => $img_info[0],
@@ -283,19 +282,19 @@ class MapInfo {
 	// Get stats on main map archive!
 	function archiveInfo() {
 		global $sp;
-		
+
 		if (!isset($this->info->FILE_PATH))
 			throw new MapArchInfoException('Do not know ov path');
-		
+
 		$this->arch_path = $sp['maps'] . str_replace(array('/home/jrgporg/public_html/tms/','maps/'), '', $this->info->FILE_PATH);
-		
+
 		// Doesn't exist?
 		if (!is_file($this->arch_path))
 			throw new MapArchInfoException('Cannot find archive file: '.$this->arch_path);
-		
+
 		// Ex
 		$ext = get_file_extension(basename($this->arch_path));
-		
+
 		// Give it
 		return array(
 			'size' => filesize($this->arch_path),
@@ -303,30 +302,30 @@ class MapInfo {
 			'path' => $this->arch_path
 		);
 	}
-	
+
 	// Get info on one of the three screenshots
 	function scrnInfo($scrn) {
-		
+
 		global $sp;
-		
+
 		// Make sure it's a number frome one to three
 		if (!ctype_digit($scrn) || !in_array($scrn, range(1,3)))
 			throw new ScrnInfoException('Invalid screenshot number - '.$scrn);
-		
+
 		// Need it
 		$this->infoArray();
-		
+
 		// This should be it
 		if (!isset($this->a_info['SC'.$scrn.'_PATH']))
 			throw new ScrnInfoException('Do not know screenshot info.');
-		
+
 		// Does not exist?
 		if (trim($this->a_info['SC'.$scrn.'_PATH']) == '')
 			throw new ScrnInfoException('This screenshot probably does not exist.');
-		
+
 		// Get path
 		$path = $sp['maps'] . str_replace(array('/home/jrgporg/public_html/tms/','maps/'), '', $this->a_info['SC'.$scrn.'_PATH']);
-		
+
 		// Exist literally?
 		if (!is_file($path))
 			throw new ScrnInfoException('Cannot find screenshot file.');
@@ -334,10 +333,10 @@ class MapInfo {
 		// Get info
 		if (!($img_info = @getimagesize($path)))
 			throw new MapOvInfoException('Cannot get info on screenshot file');
-		
+
 		// Ex
 		$ext = get_file_extension(basename($path));
-		
+
 		// Give it
 		return array(
 			'width' => $img_info[0],
