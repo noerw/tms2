@@ -19,10 +19,6 @@ class ComposerStaticInitbbf8c42ddbe0373dbda57ba92c857401
         array (
             'Wohali\\OAuth2\\Client\\' => 21,
         ),
-        'R' => 
-        array (
-            'ReCaptcha\\' => 10,
-        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
@@ -45,14 +41,10 @@ class ComposerStaticInitbbf8c42ddbe0373dbda57ba92c857401
         array (
             0 => __DIR__ . '/..' . '/wohali/oauth2-discord-new/src',
         ),
-        'ReCaptcha\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
-        ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (

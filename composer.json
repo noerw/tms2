@@ -1,6 +1,5 @@
 {
     "require": {
-        "google/recaptcha": "^1.2",
         "dshafik/php7-mysql-shim": "^0.2.0",
         "wohali/oauth2-discord-new": "^1.1"
     }

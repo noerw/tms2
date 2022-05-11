@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'e2747f54f790b300c985c9ed624490e5e2c113bf',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'e2747f54f790b300c985c9ed624490e5e2c113bf',
             'dev_requirement' => false,
         ),
         'dshafik/php7-mysql-shim' => array(
@@ -26,15 +26,6 @@
             'install_path' => __DIR__ . '/../dshafik/php7-mysql-shim',
             'aliases' => array(),
             'reference' => '615fb0f4111d584d5a36a9abc5f0c28e417a9c7e',
-            'dev_requirement' => false,
-        ),
-        'google/recaptcha' => array(
-            'pretty_version' => '1.2.1',
-            'version' => '1.2.1.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../google/recaptcha',
-            'aliases' => array(),
-            'reference' => 'e7add3be59211482ecdb942288f52da64a35f61a',
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
