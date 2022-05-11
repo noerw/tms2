@@ -34,10 +34,6 @@ class Layout  {
 			array('act' => 'home', 'name' => 'Home'),
 			array('act' => 'maps', 'name' => 'Map Search', 'c' => array('maps', 'map_rate', 'user_maps')),
 			array('act' => 'members', 'name' => 'Members'),
-			array('act' => 'resources', 'name' => 'Resources'),
-			array('act' => 'forum', 'name' => 'Forum'),
-			array('act' => 'tools', 'name' => 'Tools'),
-			array('act' => 'tutorials', 'name' => 'Tutorials'),
 			array('act' => 'contact', 'name' => 'Contact'),
 		);
 
@@ -174,7 +170,6 @@ class Layout  {
 				<div id="ave"><img style="width: 60px; height: 60px;" src="/a/'.$ui->userID().'" alt="'.stringprep($ui->userName()).'" /></div>
 				<ul id="user_actions">
 					<li><a href="'.$entry_point.'?action=map_upload">Map Upload</a> | <a href="'.$entry_point.'?action=my_maps">My Maps</a></li>
-					<li><a href="'.$entry_point.'?action=pm">PM</a></li>
 					<li><a href="'.$entry_point.'?action=profile">Settings</a></li>
 					<li><a href="'.$entry_point.'?action=logout">Logout</a></li>
 				</ul>

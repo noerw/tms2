@@ -15,7 +15,6 @@ Be aware: this is written in 2006-style PHP, in that it does not use MVC or prep
 - map uploading, including screenshots
 - map searching
 - map rating + viewing
-- forum
 - polls
 - shoutbox
 - auth via Discord's oauth2
