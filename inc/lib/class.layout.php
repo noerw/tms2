@@ -108,12 +108,12 @@ class Layout  {
 	// Send out CSS deps
 	foreach ($this->css as $f)
 	echo '
-	<link href="'.$sp['web_theme'].'c.php?f='.$f.'&amp;v='.@filemtime($sp['local_theme'].$f).'" rel="stylesheet" type="text/css" />';
+	<link href="'.$sp['web_theme'].$f.'?v='.@filemtime($sp['local_theme'].$f).'" rel="stylesheet" type="text/css" />';
 
 	// And JS
 	foreach ($this->js as $f)
 	echo '
-	<script type="text/javascript" src="'.$sp['web_theme'].'c.php?f='.$f.'&amp;v='.@filemtime($sp['local_theme'].$f).'"></script>';
+	<script type="text/javascript" src="'.$sp['web_theme'].$f.'?v='.@filemtime($sp['local_theme'].$f).'"></script>';
 
 	echo '
 	<title>The Soldat2 Mapping Showcase ',$title ? ' &raquo; '.$title : '','</title>
