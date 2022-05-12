@@ -112,7 +112,7 @@ echo '
 	</div>
 	<div class="gen_box_rh_content overview center">
 		<a href="'.$entry_point.'?overview='.$mid.'" title="Click to enlarge">
-			<img class="border border4" width="530" height="400" src="/t/'.$mid.':530x400" alt="" title="Click to enlarge" />
+			<img class="border border4" width="530" src="'.$entry_point.'?overview='.$mid.'" alt="" title="Click to enlarge" />
 		</a>
 		<div class="sub">';
 
@@ -194,7 +194,7 @@ echo '
 		<h4>Author\'s Description</h4>
 	</div>
 	<div class="gen_box_rh_content">
-		<p>',$map_info->INFO == '' ? '<em>none</em>' : bbc($map_info->INFO),'</p>
+		<p>',$map_info->INFO == '' ? '<em>none</em>' : stringprep($map_info->INFO, true, true, true, true),'</p>
 	</div>
 </div>';
 
