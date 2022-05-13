@@ -15,7 +15,7 @@ $provider = new \Wohali\OAuth2\Client\Provider\Discord([
 if (!isset($_GET['code'])) {
 
     $options = [
-      'scope' => ['identify', 'email'],
+      'scope' => ['identify'],
       'state' => 'DISCORDAUTH_'.base64_encode(random_bytes(20)),
     ];
 
@@ -37,23 +37,10 @@ if (!isset($_GET['code'])) {
         'code' => $_GET['code']
     ]);
 
-    // Show some token details
-    echo '<h2>Token details:</h2>';
-    echo 'Token: ' . $token->getToken() . "<br/>";
-    echo 'Refresh token: ' . $token->getRefreshToken() . "<br/>";
-    echo 'Expires: ' . $token->getExpires() . " - ";
-    echo ($token->hasExpired() ? 'expired' : 'not expired') . "<br/>";
-
     // Step 3. (Optional) Look up the user's profile with the provided token
     try {
 
         $user = $provider->getResourceOwner($token);
-
-        /*
-        echo '<h2>Resource owner details:</h2>';
-        printf('Hello %s#%s!<br/><br/>', $user->getUsername(), $user->getDiscriminator());
-        var_export($user->toArray());
-         */
 
         $username = sprintf('%s#%s', $user->getUsername(), $user->getDiscriminator());
 

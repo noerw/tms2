@@ -136,7 +136,7 @@ switch ($_POST['work_type']) {
 				$layout->errorMsg('Wrong avatar image type.');
 
 			// Seems fine. Formulate paths.
-			$db_path = $sql->prod('avatars/u'.$ui->userID().'.'.image_type_to_extension($ave_info[2], false));
+			$db_path = $sql->prot('avatars/u'.$ui->userID().'.'.image_type_to_extension($ave_info[2], false));
 			$real_path = realpath($sp['avatars']).'/u'.$ui->userID().'.'.image_type_to_extension($ave_info[2], false);
 
 			// Try saving it
