@@ -272,11 +272,9 @@ a img {
 
 
 .map_thumb_big {
-	background-image: url('/images/nm_thumb_bg.png');
-	padding: 8px;
 	text-align: center;
-	width: 100px;
-	height: 75px;
+	box-shadow: 0px 0px 4px 2px #000;
+	margin: 10px;
 }
 
 .map_thumb_sm {
