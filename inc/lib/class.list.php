@@ -156,8 +156,8 @@ class mapList {
 				m.sc2,
 				m.sc3,
 				m.no_comments,
-				(select avg(rating) from map_ratings where mapid = m.id and rating != '0') as rating,
-				(select count(*) from map_ratings where mapid = m.id) as num_rats
+				(select avg(rating) from map_ratings where mapid = m.id and rating != 0) as rating,
+				(select count(*) from map_ratings where mapid = m.id and rating != 0) as num_rats
 				".($this->gametype == false ? ", m.gametype as gid, g.name as gn" : '')."
 				".($this->downs ? ", d.file as fd, d.pic as od" : '')."
 				".(!is_numeric($this->author) ? ", m.user as uid, u.username " : '')."
