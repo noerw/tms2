@@ -14,7 +14,7 @@ class Threads {
 	/*
 	 * Store the items
 	 */
-	var
+	public
 		$items = array(),
 		$id = false;
 

@@ -10,13 +10,13 @@ defined('in_tms') or exit;
 class Layout {
 
 	// Hold themes
-	var
+	private
 		$themes = array(),
 		$current_theme = 0,
 		$ob = true;
 
 	// Stuff dealing with the nav and files to use
-	var
+	private
 		$nav = array(),
 		$css = array('main.css'),
 		$js = array('layout.js', 'common.js'),
