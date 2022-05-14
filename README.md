@@ -32,8 +32,8 @@ Be aware: this is written in 2006-style PHP, in that it does not use MVC or prep
 ## Runs on
 
 - MySQL 5+
-- PHP 5.2+, verified with PHP 7.4
-- Apache (use ruid2 for privilege separation)
+- PHP >= 7.2+, verified with PHP 7.4
+- Apache (verified using `mod_php` with `mod_ruid2`)
 - nginx + php-fpm would also work
 
 ## Dev install:
