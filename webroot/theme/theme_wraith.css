@@ -34,3 +34,7 @@ input, textarea, select {
 	background-color: #1D3345;
 	border-color: #255175;
 }*/
+
+#content .gen_box_rh_content.download a:hover {
+	background-color: rgb(198, 207, 232);
+}

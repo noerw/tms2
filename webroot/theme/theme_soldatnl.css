@@ -23,3 +23,6 @@ a:hover, .fake_link:hover {
 	color: #FF8000;
 }
 
+#content .gen_box_rh_content.download a:hover {
+  background-color: #000;
+}

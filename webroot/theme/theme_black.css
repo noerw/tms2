@@ -22,3 +22,7 @@ a, .fake_link {
 a:hover, .fake_link:hover {
 	color: red;
 }
+
+#content .gen_box_rh_content.download a:hover {
+  background-color: #E5E5E5;
+}

@@ -38,3 +38,7 @@ input, textarea, select {
 input[type="submit"]:hover, input[type="reset"]:hover {
 	color: white;
 }
+
+#content .gen_box_rh_content.download a:hover {
+  background-color: #1B2A41;
+}

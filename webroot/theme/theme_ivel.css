@@ -8,14 +8,12 @@
 }
 #content table th, #content table td, #content .forum_post_meta, #content .forum_post, #tms .border, h1 span,h2 span,h3 span, #content h1, #content, #side .widge, #side .widge h2, #side .widge h2.sect, #user_panel, #user_panel #ave, #user_greeting, #layout_collapse, #tms fieldset, #tms fieldset legend  {
 	border-color: #000;
-	background-color: #ccc;
 	color: #000;
 	background-image: url('/images/content_bg.png');
 }
 #content tr.alt td, #content table th, #tms .alt, #content .alt, #side .alt, #side .widge .alt, #tms .alt a  {
 	background-color: #1B2A41;
 	background-image: url('/images/content_bg_alt.png');
-	background-color: #ccc;
 }
 #tms h1 span, #tms h2 span, #tms h3 span {
 	text-shadow: #ccc 1px 1px 1px;
@@ -37,4 +35,8 @@ input, textarea, select {
 	color: #000;
 	background-color: #999;
 	border-color: #000;
+}
+
+#content .gen_box_rh_content.download a:hover {
+	background-image: url('/images/content_bg_alt.png');
 }
