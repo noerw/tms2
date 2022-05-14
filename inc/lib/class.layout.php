@@ -7,7 +7,7 @@ defined('in_tms') or exit;
 
 // HTML output management
 
-class Layout  {
+class Layout {
 
 	// Hold themes
 	var
@@ -19,7 +19,8 @@ class Layout  {
 	var
 		$nav = array(),
 		$css = array('main.css'),
-		$js = array('layout.js', 'common.js', /*'jquery-1.4.2.min.js', 'jquery.lazyload.mini.js'*/);
+		$js = array('layout.js', 'common.js'),
+		$meta = array();
 
 
 	/*
@@ -100,6 +101,11 @@ class Layout  {
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />';
+
+	// Send out extra meta tags
+	foreach($this->meta as $m)
+	echo '
+	<meta property="'.htmlspecialchars($m[0]).'" content="'.htmlspecialchars($m[1]).'" />';
 
 	// Send out CSS deps
 	foreach ($this->css as $f)
@@ -639,6 +645,13 @@ $m = $m[1];
 		else
 			return false;
 		return true;
+	}
+
+	/*
+	 * Add meta tags. Eg for open graph
+	 */
+	public function add_meta($key, $value) {
+		$this->meta[] = [$key, $value];
 	}
 
 	/*

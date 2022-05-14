@@ -35,6 +35,13 @@ if ($map_info->MISSING)
 // We need a special stylesheet for this file
 $layout->add_dep('css', 'map_profile.css');
 
+// OG tags
+$layout->add_meta('og:title', $map_info->MAP_NAME);
+$layout->add_meta('og:url', $entry_point_sm.'?map='.$mid);
+$layout->add_meta('og:image', $entry_point_sm.'t/'.$mid);
+$layout->add_meta('og:updated_time', empty($map_info->EDIT_DATE) ? $map_info->UPLOAD_DATE : $map_info->EDIT_DATE);
+$layout->add_meta('og:description', $map_info->MAP_NAME . ' by ' . $map_info->AUTHOR_USERNAME);
+
 // Start out layout
 $layout->head($map_info->MAP_NAME);
 
