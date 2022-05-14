@@ -10,7 +10,7 @@ defined('in_tms') or exit;
 class Layout {
 
 	// Hold themes
-	private
+	public
 		$themes = array(),
 		$current_theme = 0,
 		$ob = true;
