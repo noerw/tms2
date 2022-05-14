@@ -84,7 +84,7 @@ class Ui {
 		global $sp;
 
 		// See if session variables are okay. If not, stop here
-		if (!ctype_digit($_SESSION['uid'])|| !is_numeric($_SESSION['uid']))
+		if (!isset($_SESSION['uid']) || !ctype_digit($_SESSION['uid'])|| !is_numeric($_SESSION['uid']))
 			return;
 
 		// Localize

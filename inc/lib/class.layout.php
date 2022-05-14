@@ -343,7 +343,7 @@ echo '
 
 					// if I am logged in and have voted. (and can hence see results)
 					elseif($ui->loggedIn() && $voted == true) {
-						foreach ($poll_options as $option) {
+						foreach ($poll_options as $option_id => $option) {
 							$this_percent = $option[0] == 0 ? 0 : round(($option[0] / $poll_info['total_votes']) * 100);
 							echo '
 							<li class="border',$option_id == $my_vote_id ? ' my_vote' : '','">
