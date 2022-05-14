@@ -535,12 +535,11 @@ document.write([
 								continue;
 
 							// Remove underscores and capitalize each word
-							//$m = preg_replace_callback(array('/\_/', '/(\w+)/'), array(' ', 'ucfirst'), $m[1]);
-$m = $m[1];
+							$name = ucwords(str_replace('_', ' ', $m[1]));
 
 							// Show option
 							echo '
-							<option',$this->current_theme == $k ? ' selected="selected"' : '',' value="'.$k.'">'.$m.'</option>';
+							<option',$this->current_theme == $k ? ' selected="selected"' : '',' value="'.$k.'">'.$name.'</option>';
 						}
 
 						echo '
