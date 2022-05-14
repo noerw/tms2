@@ -33,12 +33,6 @@ if (!in_array(SITE_ACTION, $non_user_actions)) {
 
 	// Load/create the class
 	$ui = Ui::Fledging();
-
-	// As well as a few more things, should we need them:
-	if (!$ui->loggedIn()) {
-		$layout->js[] = 'login.js';
-		$layout->css[] = 'login.css';
-	}
 }
 
 // Deal with stats?
