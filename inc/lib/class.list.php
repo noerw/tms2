@@ -223,9 +223,9 @@ class mapList {
 		foreach ($show as $info) {
 			echo '
 			<div class="gen_box_rh border',$alt ? ' alt' : '','">
-				<div class="gen_box_rh_head border',$alt ? ' alt' : '','"><h4><a href="'.$entry_point_sm.'?map='.$info['id'].'">'.$info['title'].'</a>', !is_numeric($this->author) ? ' by '.userLink($info['uid'], $info['username']) : '','</h4></div>
+				<div class="gen_box_rh_head border',$alt ? ' alt' : '','"><h4><a href="'.$entry_point_sm.'?map='.$info['id'].'">'.htmlspecialchars($info['title']).'</a>', !is_numeric($this->author) ? ' by '.userLink($info['uid'], $info['username']) : '','</h4></div>
 				',$info['num_rats'] > 0 && $info['no_comments'] != '1' ? '<div class="gen_box_rh_head_r border'.($alt ? ' alt' : '').'">'.ceil($info['rating']).'/5</div>' : '','
-				<div class="map_ov"><a href="'.$entry_point_sm.'?map='.$info['id'].'"><img alt="'.$info['title'].'" class="border" src="/t/'.$info['id'].':110x90" width="110" height="90" /></a></div>
+				<div class="map_ov"><a href="'.$entry_point_sm.'?map='.$info['id'].'"><img alt="'.htmlspecialchars($info['title']).'" class="border" src="/t/'.$info['id'].':110x90" width="110" height="90" /></a></div>
 				<div class="map_down">
 					<a class="border" href="'.$entry_point_sm.'?map='.$info['id'].'">Map Profile</a>
 					<a class="border" href="'.$entry_point_sm.'?download='.$info['id'].'">Download</a>

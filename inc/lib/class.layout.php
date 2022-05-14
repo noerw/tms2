@@ -118,7 +118,7 @@ class Layout {
 	<script type="text/javascript" src="'.$sp['web_theme'].$f.'?v='.@filemtime($sp['local_theme'].$f).'"></script>';
 
 	echo '
-	<title>The Soldat2 Mapping Showcase ',$title ? ' &raquo; '.$title : '','</title>
+	<title>The Soldat2 Mapping Showcase ',$title ? ' &raquo; '.htmlspecialchars($title) : '','</title>
 	<style type="text/css">
 		#wrapper {
 			width: ',@$_SESSION['site_width'] == 'fluid' || in_array(SITE_ACTION, $fluid_layout_actions) ? '95%' : '770px',';
@@ -230,7 +230,7 @@ class Layout {
 		</div>
 		<div id="content_out">
 			<div id="content">
-				<h1><span>'.$title.'</span></h1>
+				<h1><span>'.htmlspecialchars($title).'</span></h1>
 				<div id="content_inner">
 		';
 
@@ -671,7 +671,7 @@ document.write([
 		$security_field_value = session_id();
 
 		// Were we allowed to proceed?
-		if ($_POST[$security_field_name] == $security_field_value && $_POST['do_proceed'] == 'yes')
+		if (isset($_POST[$security_field_name]) && $_POST[$security_field_name] == $security_field_value && $_POST['do_proceed'] == 'yes')
 		{
 			// leave this function and allow the rest of code under function call to process
 			return true;

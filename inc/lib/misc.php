@@ -126,7 +126,7 @@ function smilies($s)
 }
 
 // Deal with an ugly string
-function stringprep($s, $htmlentities = false, $smilies = false, $bbc = false, $nlbr = false) {
+function stringprep($s, $htmlentities = true, $smilies = false, $bbc = false, $nlbr = false) {
 	$s = stripslashes(trim(strip_tags($s)));
 	$s = $htmlentities ? htmlspecialchars($s, ENT_NOQUOTES) : $s;
 	$s = $bbc === true ? bbc($s) : $s;

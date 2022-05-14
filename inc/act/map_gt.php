@@ -30,7 +30,7 @@ $sql->free($get_gametypes);
 /*
  * Current gametype
  */
-$desired_gametype = $sql->prot($_GET['gametype']);
+$desired_gametype = isset($_GET['gametype']) ? $sql->prot($_GET['gametype']) : 0;
 $current_gametype_info = array_key_exists($desired_gametype, $gametypes) ? $gametypes[$desired_gametype] : current($gametypes);
 $current_gametype = array_key_exists($desired_gametype, $gametypes) ? $desired_gametype : key($gametypes);
 
