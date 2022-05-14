@@ -76,7 +76,7 @@ class MapInfo {
 			m.sc3 as SC3_PATH,
 			m.gametype as GAMETYPE_ID,
 			m.info as INFO,
-			m.missing
+			m.missing as MISSING
 		from
 			maps as m
 			join members as a on a.id = m.user
@@ -90,7 +90,7 @@ class MapInfo {
 
 		$this->info = $this->_sql->fetch_object($get);
 
-		if ($this->info->missing == '1')
+		if ($this->info->MISSING == '1')
 			throw new MapException('Map files are missing');
 
 		$this->uid = $this->info->AUTHOR_ID;

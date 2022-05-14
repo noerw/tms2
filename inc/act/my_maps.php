@@ -176,7 +176,7 @@ function map_edit() {
 	// Get info
 	$map_info = $sql->fetch_assoc($get_info);
 	$sql->free($get_info);
-	foreach(array('title', 'info', 'gametype_name') as $k)
+	foreach(array('title', 'info') as $k)
 		$map_info[$k] = stringprep($map_info[$k]);
 
 	// Not my map?
@@ -184,14 +184,14 @@ function map_edit() {
 		$layout->errorMsg('This map is not yours');
 
 	// Form not submitted?
-	if ($_POST['do_edit'] != 'yes')
+	if (!isset($_POST['do_edit']) || $_POST['do_edit'] != 'yes')
 	{
 
 		// Start layout
 		$layout->head('Edit  '.$map_info['title']);
 
 		// Success message
-		if ($_GET['updated'] == 1)
+		if (isset($_GET['updated']) && $_GET['updated'] == 1)
 			echo '<p class="good">Updated successfully</p>';
 
 		?>
@@ -509,7 +509,7 @@ function map_edit() {
 
 					// This should never happen
 					default:
-						continue;
+						continue 2;
 					break;
 				}
 			}

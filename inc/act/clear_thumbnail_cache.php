@@ -58,7 +58,7 @@ catch (cacheException $e) {}
 try {
 	$cache = new OV_Thumbs($mid);
 	$cache->remove(true);
-	
+
 }
 catch (cacheException $e) {}
 
