@@ -16,7 +16,7 @@ $ui->userActivated() or
 	$layout->errorMsg('Account must be activated');
 
 // Decide what to do
-switch ($_GET['sa']) {
+switch ($_GET['sa'] ?? null) {
 
 	// Edit files for a map
 	case 'edit':
@@ -315,7 +315,6 @@ function map_edit() {
 			$new_gametype = ctype_digit($_POST['gametype']) && !empty($_POST['gametype']) ? $_POST['gametype'] : $map_info['gametype'];
 			$new_num_p = ctype_digit($_POST['rc_f1']) && ctype_digit($_POST['rc_f2']) && $_POST['rc_f1'] > 0 && $_POST['rc_f2'] > $_POST['rc_f1'] ?
 				array($_POST['rc_f1'], $_POST['rc_f2']) : array(0, 0);
-			$new_waypoints = $_POST['waypoints'] == 'yes' ? 1 : 0;
 			$new_dis_comments = $_POST['comments'] == 'no' ? 1 : 0;
 			$new_description = $sql->prot(trim(strip_tags($_POST['description'])));
 
@@ -343,7 +342,6 @@ function map_edit() {
 				`title` = '$new_title',
 				`gametype` = '$new_gametype',
 				`info` = '$new_description',
-				`waypoints` = '$new_waypoints',
 				`rec_players_start` = '{$new_num_p[0]}',
 				`rec_players_end` = '{$new_num_p[1]}',
 				`no_comments` = '$new_dis_comments'

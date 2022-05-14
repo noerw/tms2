@@ -24,7 +24,7 @@ if (!isset($_POST['do_work']) || $_POST['do_work'] != 'yes') {
 	$layout->head('Profile Settings');
 
 	// We updated goodly
-	if ($_GET['upd'] == 1)
+	if (($_GET['upd'] ?? null) == 1)
 		echo '<p class="good">Updated successfully</p>';
 ?>
 <form enctype="multipart/form-data" action="<?=$entry_point?>?action=profile" method="post">
