@@ -313,7 +313,7 @@ if ($map_info->NO_COMMENTS != '1') {
 					echo '
 					<label for="rating">Rating:</label>
 					<select id="rating" name="rating">
-						<option value="">Choose</option>';
+						<option value="0">None</option>';
 
 						// Show 1-5
 						for ($i = 1; $i <= 5; $i++)

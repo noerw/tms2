@@ -52,8 +52,10 @@ if ($uid != $ui->userID()) {
 	$rating = $sql->prot($_POST['rating']);
 
 	// If not, make sure I'm doin' it right
-	if (!$rated && (!is_numeric($rating) || $rating < 1 || $rating > 5))
-		$layout->errorMsg('You must choose a rating.');
+	if ($rating != '0') {
+		if (!$rated && (!is_numeric($rating) || $rating < 1 || $rating > 5))
+			$layout->errorMsg('You must choose a rating.');
+	}
 }
 
 // Make sure I supplied a commment
