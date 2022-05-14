@@ -41,6 +41,7 @@
 	min-height: 65px;
 	background-repeat: no-repeat;
 	background-position: center center;
+	background-size: cover;
 }
 .map_author_avatar img {
 	margin-top: 2px;
