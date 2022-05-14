@@ -72,16 +72,66 @@ class Ui {
 	 * Create a login session with a UID
 	 */
 
-  public function createAuthSession($uid){
-    $_SESSION['uid'] = $uid;
-    $this->manageSession();
-  }
+	public function createAuthSession($uid){
+		$_SESSION['uid'] = $uid;
+		$this->manageSession();
+		$this->setCookie();
+	}
+
+	/*
+	 * Delete a login cookie which may exist
+	 */
+	public function killCookie() {
+		if (REMEMBER_COOKIE == '')
+				return;
+		unset($_COOKIE[REMEMBER_COOKIE]);
+		setcookie(REMEMBER_COOKIE, '', [
+			'expires' => time()-60*60*24*30,
+			'path' => '/',
+			'secure' => true,
+			'httponly' => true,
+			'domain' => $_SERVER['HTTP_HOST'],
+			'samesite' => 'Strict'
+		]);
+	}
+
+	/*
+	 * Create encrypted login cookie containing our UID to make login session longer than the php session
+	 */
+	public function setCookie() {
+		if (!$this->_logged_in || REMEMBER_COOKIE == '' || REMEMBER_COOKIE_KEY == '' || strlen(REMEMBER_COOKIE_KEY) != SODIUM_CRYPTO_SECRETBOX_KEYBYTES)
+				return;
+		$payload = json_encode(['uid' => $this->user['uid']]);
+		$encrypted = encrypt_payload($payload, REMEMBER_COOKIE_KEY);
+		setcookie(REMEMBER_COOKIE, $encrypted, [
+			'expires' => time()+60*60*24*30,
+			'path' => '/',
+			'secure' => true,
+			'httponly' => true,
+			'domain' => $_SERVER['HTTP_HOST'],
+			'samesite' => 'Strict'
+		]);
+	}
 
 	/*
 	 * Attempt to auth
 	 */
 	private function manageSession() {
 		global $sp;
+
+		// Try loading a login cookie if one exists
+		if (REMEMBER_COOKIE != '' && isset($_COOKIE[REMEMBER_COOKIE]) && $_COOKIE[REMEMBER_COOKIE] != '' && REMEMBER_COOKIE_KEY != ''){
+			$cookie_raw_contents = $_COOKIE[REMEMBER_COOKIE];
+			$decrypted = decrypt_payload($cookie_raw_contents, REMEMBER_COOKIE_KEY);
+			if ($decrypted !== false) {
+				$decoded = json_decode($decrypted, true);
+				if (isset($decoded['uid']) && (ctype_digit($decoded['uid']) || is_numeric($decoded['uid']))) {
+						$_SESSION['uid'] = $decoded['uid'];
+				}
+			} else{
+				$this->killCookie();
+			}
+		}
 
 		// See if session variables are okay. If not, stop here
 		if (!isset($_SESSION['uid']) || !ctype_digit($_SESSION['uid'])|| !is_numeric($_SESSION['uid']))
@@ -209,6 +259,9 @@ class Ui {
 
 		// Make sure use array is empty
 		$this->user = false;
+
+		// Delete login remember cookie if it exists
+		$this->killCookie();
 	}
 
 	/*

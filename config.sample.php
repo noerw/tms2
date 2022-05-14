@@ -58,6 +58,12 @@ $non_hits_actions = array(
 // Name of session
 $session_name = 'tmssession';
 
+// Login remember cookie
+define('REMEMBER_COOKIE', '');
+
+// Cookie encryption code. Generate a code using "echo hex2bin(sodium_crypto_secretbox_keygen());"
+define('REMEMBER_COOKIE_KEY', '');
+
 // actions forced to use fluid layout
 $fluid_layout_actions = array('forum', 'tutorials', 'my_maps');
 

@@ -56,6 +56,7 @@ require_once LIB . 'maintenance.php';	// Functions for maintaining DB and such
 require_once LIB . 'check_email.php';	// Email address validator
 require_once LIB . 'image.php';		// Image caching/outputting/etc functions
 require_once LIB . 'init.res.php';	// Functions the init script needs
+require_once LIB . 'encryption.php';	// Helper functions around libsodium's secretbox
 
 // Deal with current action, and initialize when ready
 $desired_action = isset($_GET['action']) ? $_GET['action'] : (isset($_GET['act']) ? $_GET['act'] : 'home');
