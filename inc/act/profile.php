@@ -18,7 +18,7 @@ foreach($current_info as $k => $v)
 	$current_info[$k] = stringprep($v, true);
 
 // Form(s) not submitted? show them
-if ($_POST['do_work'] != 'yes') {
+if (!isset($_POST['do_work']) || $_POST['do_work'] != 'yes') {
 
 	// Start layout
 	$layout->head('Profile Settings');
@@ -95,7 +95,7 @@ switch ($_POST['work_type']) {
 
 		// Get input
 		$offset = is_numeric($_POST['hour_offset']) && $_POST['hour_offset'] < 23 && $_POST['hour_offset'] > -23 ? $_POST['hour_offset'] : 0;
-		$dis_filter = $_POST['wordfilter'] == 'yes' ? 0 : 1;
+		$dis_filter = isset($_POST['wordfilter']) && $_POST['wordfilter'] == 'yes' ? 0 : 1;
 
 		// Update
 		$sql->query("

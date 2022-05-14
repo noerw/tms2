@@ -8,7 +8,7 @@ defined('in_tms') or exit;
 /*
  * Compat with old url
  */
-if ($_GET['sa'] == 'user_maps' && is_numeric($_GET['u']))
+if (isset($_GET['sa']) && isset($_GET['u']) && $_GET['sa'] == 'user_maps' && is_numeric($_GET['u']))
 	redirect($web_url.'?user='.$_GET['u']);
 
 /*
@@ -22,11 +22,11 @@ $list->setBool('downs', true);
  */
 
 if (@$_GET['st'] == '') {
-	$desired_gametype = is_numeric($_GET['gt']) ? $_GET['gt'] : null;
-	$desired_authors = strip_tags(trim($_GET['author']));
+	$desired_gametype = isset($_GET['gt']) && is_numeric($_GET['gt']) ? $_GET['gt'] : null;
+	$desired_authors = isset($_GET['author']) ?  strip_tags(trim($_GET['author'])) : '';
 	$desired_authors_a = (array) explode(',', $desired_authors, 5);
-	$search_term = strip_tags(trim($_GET['search']));
-	$search_descript = $_GET['descript'] == 'yes';
+	$search_term = isset($_GET['search']) ? strip_tags(trim($_GET['search'])) : '';
+	$search_descript = isset($_GET['descript']) && $_GET['descript'] == 'yes';
 } else {
 	$b64 = @unserialize(@base64_decode($_GET['st']));
 	if (is_array($b64)) {
@@ -42,7 +42,7 @@ if (@$_GET['st'] == '') {
 /*
  * Sorting
  */
-switch ($_GET['sort']) {
+switch ($_GET['sort'] ?? null) {
 	case 'downloads':
 		$sort = 'fd';
 		$good_sort = true;
@@ -61,7 +61,7 @@ switch ($_GET['sort']) {
 		$good_sort = false;
 	break;
 }
-$list->setSort($sort, $_GET['dir'] == 'up' ? 'up' : 'down');
+$list->setSort($sort, isset($_GET['dir']) && $_GET['dir'] == 'up' ? 'up' : 'down');
 
 
 // For next time (pagination)
@@ -71,7 +71,7 @@ $next_b64 = base64_encode(serialize(array(
 	'search' => $search_term,
 	'descript' => ($search_descript == 'yes' ? 'yes' : ''),
 	'sort' => $good_sort ? $_GET['sort'] : '',
-	'dir' => $_GET['dir'] == 'up' ? 'up' : 'down'
+	'dir' => isset($_GET['dir']) && $_GET['dir'] == 'up' ? 'up' : 'down'
 )));
 
 // So we can decide which are incorrect
@@ -134,7 +134,7 @@ if ($search_term != '') {
 /*
  * Sorting
  */
-switch ($_GET['sort']) {
+switch ($_GET['sort'] ?? null) {
 	case 'downloads':
 		$sort = 'fd';
 	break;
@@ -148,7 +148,7 @@ switch ($_GET['sort']) {
 		$sort = 'm.title';
 	break;
 }
-$list->setSort($sort, $_GET['dir'] == 'up' ? 'up' : 'down');
+$list->setSort($sort, isset($_GET['dir']) && $_GET['dir'] == 'up' ? 'up' : 'down');
 
 /*
  * Pagination
