@@ -55,7 +55,7 @@ class Threads {
 				',!empty($info['tr']) ? '<div class="gen_box_rh_head_r border'.($alt ? ' alt' : '').'">'.$info['tr'].'</div>' : '','
 				<div class="gen_box_rh_content">
 					<div class="gen_box_rh_avatar">
-						<img src="/a/'.$info['userid'].'" alt="'.stringprep($info['username']).'" />
+						<img src="/a/'.$info['userid'].'" alt="'.stringprep($info['username']).'" width="62" height="62"/>
 					</div>
 					<div class="gen_box_rh_sub_content border',$alt ? ' alt' : '','">
 						<p>'.stringprep($info['comment'], true, true, true, true).'</p>
