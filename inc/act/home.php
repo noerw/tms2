@@ -96,7 +96,7 @@ echo '
 		<h3><a href="'.$entry_point.'?action=top_stat&amp;sa=latest">Latest Map</a></h3>
     '.($latest_map != null ? '
 		<a href="'.$entry_point_sm.'?map='.$latest_map['id'].'">
-			<img src="/t/'.$latest_map['id'].':150x113" alt="'.$latest_map['title'].'" class="map_thumb_big" />
+			<img src="/t/'.$latest_map['id'].':150x0" alt="'.$latest_map['title'].'" class="map_thumb_big" />
 		</a><br />
 		<a href="'.$entry_point_sm.'?map='.$latest_map['id'].'">'.$latest_map['title'].'</a> by '.userLink($latest_map['user'], $latest_map['username']).'
      ' : 'No maps').'
@@ -105,7 +105,7 @@ echo '
 		<h3><a href="'.$entry_point.'?action=top_stat&amp;sa=mapoftheweek">Map of the Week</a></h3>
     '.($map_of_the_week != null ? '
 		<a href="'.$entry_point_sm.'?map='.$map_of_the_week['id'].'">
-			<img src="/t/'.$map_of_the_week['id'].':150x113" alt="'.$map_of_the_week['title'].'" class="map_thumb_big" />
+			<img src="/t/'.$map_of_the_week['id'].':150x0" alt="'.$map_of_the_week['title'].'" class="map_thumb_big" />
 		</a><br />
 		<a href="'.$entry_point_sm.'?map='.$map_of_the_week['id'].'">'.$map_of_the_week['title'].'</a> by '.userLink($map_of_the_week['user'], $map_of_the_week['username']).'
      ' : 'No maps').'
@@ -114,7 +114,7 @@ echo '
 		<h3><a href="'.$entry_point.'?action=top_stat&amp;sa=random">Random Map</a></h3>
     '.($random_map != null ? '
 		<a href="'.$entry_point_sm.'?map='.$random_map['id'].'">
-			<img src="/t/'.$random_map['id'].':150x113" alt="'.$random_map['title'].'" class="map_thumb_big" />
+			<img src="/t/'.$random_map['id'].':150x0" alt="'.$random_map['title'].'" class="map_thumb_big" />
 		</a><br />
 		<a href="'.$entry_point_sm.'?map='.$random_map['id'].'">'.$random_map['title'].'</a> by '.userLink($random_map['user'], $random_map['username']).'
      ' : 'No maps').'

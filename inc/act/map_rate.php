@@ -93,7 +93,7 @@ echo '
 		while (list($tmid, $tname) = $sql->fetch_row($get_more)) {
 			$tname = stringprep($tname, true);
 			echo '
-			<a href="'.$entry_point_sm.'?map='.$tmid.'" title="'.$tname.'"><img class="border" src="/t/'.$tmid.':45x45" alt="'.$tname.'" /></a>';
+			<a href="'.$entry_point_sm.'?map='.$tmid.'" title="'.$tname.'"><img class="border" src="/t/'.$tmid.':45x0" alt="'.$tname.'" /></a>';
 		}
 
 		// Free ram it used
@@ -167,7 +167,7 @@ echo '
 		foreach ($scrn as $num) {
 			echo '
 			<a href="'.$entry_point.'?action=download&amp;sa=scr&amp;map='.$mid.'&amp;scn='.$num.'" title="Click to englarge">
-				<img class="border border4" src="/t/'.$mid.':sc'.$num.':150x112" alt="Screenshot" width="150" height="112" />
+				<img class="border border4" src="/t/'.$mid.':sc'.$num.':150x0" alt="Screenshot" width="150" />
 			</a>';
 		}
 	}

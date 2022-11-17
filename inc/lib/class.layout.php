@@ -207,7 +207,7 @@ class Layout {
 
 					// Show it
 					echo '
-				<img class="border" alt="'.stringprep($mtitle).'" style="top: '.$i.'px; left: '.$i.'px;" width="45" height="45" src="/t/'.$mid.':45x45" />';
+				<img class="border" alt="'.stringprep($mtitle).'" style="top: '.$i.'px; left: '.$i.'px;" height="45" src="/t/'.$mid.':0x45" />';
 				}
 			}
 
