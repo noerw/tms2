@@ -165,6 +165,13 @@ abstract class Thumbs_base implements Thumbs {
 		if ($orig_width < $this->size[0] && $orig_height < $this->size[1]) {
 			$this->size = array($orig_width, $orig_height);
 		}
+		// Maintain aspect ratio if desired size has one 0 in it
+		$ratio = $orig_width/$orig_height;
+		if ($this->size[0] == 0) {
+		   $this->size[0] = this->size[1] * $ratio;
+		} else if $this->size[1] == 0) {
+		   $this->size[1] = $this->size[0] / $ratio;
+		}
 
 		// Attempt loading it based on ext
 		if ($orig_type == IMAGETYPE_JPEG && !($orig_resource = @imagecreatefromjpeg($orig_path)))
